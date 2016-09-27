@@ -1,0 +1,54 @@
+int main (){
+        int i=20;
+        int j=11;
+        if (i!=j){
+                i++;
+        }else{
+               i--;
+        }   
+        return i+j;
+}
+
+LENGUAJE ENSAMBLADOR.. 
+                                                                                                                                                               
+Definición de registros..    
+                        
+    i=%L0                                                             
+   j=%L1    
+
+Inicialización de variables                                                                                                                                                                                
+ mov 20,%L0                                                                                                                                                                                                   
+ mov 11,%L1    
+
+Ejecución de operaciones 
+  CMP  %L0,%L1,%L2                                                                                                                                                           
+  BE  a   RESTA               
+ ADD %L0,1,%L0  
+ BA a  EXIT 
+RESTA  
+SUB %L0,1,%L0 
+EXIT
+ADD %L0,%L1,%O0           
+EXIT
+NOP
+
+
+LENGUAJE DE MAQUINA...
+
+
+DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero  RS2
+OX0000	10	10000	000010	00000	1	00000000101000	
+OX0004	10	10001	000010	00000	1	0000000001011	
+OX0008	10	10010	010100	10000	0	00000000	10001
+	OP	a	cond	OP2	disp22		
+OX000C	00	1	0001	0010	000000000000000000011		
+	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX0010	10	10000	000000	10000	1	0000000000001	
+	OP	a	cond	OP2	disp22		
+OX0014	00	1	1000	0010	0000000000000000000010		
+	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX0018	10	10000	000100	10000	1	0000000000001	
+OX001C	10	1000	000000	10000	0	00000000	10001
+	OP	RD	OP2	Imm22			
+OX0020	00	00000	100	0000000000000000000000			
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
