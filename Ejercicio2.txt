@@ -1,0 +1,48 @@
+int main (){
+int i=-19600;
+b[2]=33;
+if (i-b[2])>12{
+return i+15;
+} else{
+return i*32;
+     }
+}
+
+LENGUAJE ENSAMBLADOR...                                                                                                                                                                Definición de registros                            
+i=%L0
+b=%L1
+Inicialización de variables                                                                                                                                                                                SETHI  -20,%L0
+OR %L0,880,%L0                                                                                                                                                                                                     mov 33,%L2                                                                                                                                                                                                                      Ejecución de operaciones                                                                                                                                                                  ST %L2,[ %L1  + (2*4) ]        
+LD [%L1+(2*4)],%L3              
+SUB %L0,%L3,%L4                       
+CMP %L4,12 ,%L5                                                                                                                                                                                                                                                                                                                                                                                                        BLE    a  SALTO1                         
+ADD %L0,15,%L0                                                                                                                                                                                                                                                                                                                                                                                                                   BA  a    EXIT                            
+SALTO1                                       
+SLL %L0,32,%L0                     
+EXIT                                                                                                                                                         
+NOP
+
+
+
+lenguaje de maquina...
+
+DIRECCI	OP	RD	OP2	Imm22			
+OX0000	00	10000	100	1111111111111111110100			
+	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX0004	10	10000	00010	10000	1	0001101110000	
+OX0008	11	10010	000100	10001	1	0000000001000	
+OX000C	11	10011	000000	10001	1	0000000001000	
+OX0010	10	10100	00010	10000	0	00000000	10011
+OX0014	10	10101	010100	10100	1	0000000001100	
+	OP	a	cond	OP2	disp22		
+OX0018	00	1	0010	010	000000000000000000011		
+	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
+OX001C	10	01000	000000	10000	1	0000000001111	
+	OP	a	cond	OP2	disp22		
+OX0020	00	1	1000	010	0000000000000000000010		
+	OP	RD	OP3	RS1	i	Unusued/zero 	SHCNT
+OX0024	10		100101		1	00000000	100000
+	OP	RD	OP2	Imm22			
+OX0028	00	00000	100	0000000000000000000000			
+
+
