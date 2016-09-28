@@ -13,12 +13,12 @@ LENGUAJE ENSAMBLADOR..
                                                                                                                                                                
 Definición de registros..    
                         
-    i=%L0                                                             
-   j=%L1    
+i=%L0                                                             
+j=%L1    
 
 Inicialización de variables                                                                                                                                                                                
- mov 20,%L0                                                                                                                                                                                                   
- mov 11,%L1    
+mov 20,%L0                                                                                                                                                                                                   
+mov 11,%L1    
 
 Ejecución de operaciones 
 CMP  %L0,%L1,%L2   
