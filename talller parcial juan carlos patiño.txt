@@ -1,16 +1,18 @@
-1. Describa la TaxonomÌa de Flynn.
 
--SISD (SINGLE INSTRUCTION SINGLE DATA): Microprocesadores
+juan carlos pati√±o hernandez
+1. Describa la Taxonom√≠a de Flynn.
+
+-SISD (SINGLE INSTRUCTION SINGLE DATA): microprocesadores
 -SIMD (SINGLE INSTRUCTION MULTIPLE DATA): GPU
--MIMD (MULTIPLE INSTRUCTION MULTIPLE DATA):Sistemas aÈreos
--MISD (MULTIPLE INSTRUCTION SINGLE DATA):Sistemas distribuidos
+-MIMD (MULTIPLE INSTRUCTION MULTIPLE DATA): sistemas a√©reos
+-MISD(MULTIPLE INSTRUCTION SINGLE DATA): sistemas distribuidos
 
-2. Diga cuales son los 4 principios de diseÒo.
+2. Diga cuales son los 4 principios de dise√±o.
 
-1- La simplicidad favorece la regularidad
-2- Entre m·s pequeÒo es m·s r·pido
-3- Hacer el caso com˙n m·s r·pido
-4- Buenos diseÒos demandan grandes compromisos
+1-La simplicidad favorece la regularidad
+2-Entre m√°s peque√±o es m√°s r√°pido
+3-Hacer el caso com√∫n m√°s r√°pido
+4-Buenos dise√±os demandan grandes compromisos
 
 3. Explique los tres formatos de instrucciones principales existentes en la arquitectura SPARCV8.
 
@@ -25,13 +27,13 @@
           OP  RD  OP3   RS1  i   UNSUED/ZERO  RS2
           OP  RD  OP3   RS1  i   UNSUED/ZERO  SHNCT       
  
-4. Explique cÛmo inicializar un valor grande, que ocupe m·s de 13 bits, en la arquitectura SPARCV8.
+4. Explique c√≥mo inicializar un valor grande, que ocupe m√°s de 13 bits, en la arquitectura SPARCV8.
 
--Se inicializa con la instrucciÛn SETHI,la cual permite almacenar hasta 22 bits
+-Se inicializa con la instrucci√≥n SETHI,la cual permite almacenar hasta 22 bits
 
-5. Como puedo reescribir la instrucciÛn (OR y SUBcc) cuando inicializo y  comparo 2 registros.
+5. Como puedo reescribir la instrucci√≥n (OR y SUBcc) cuando inicializo y  comparo 2 registros.
 
--Se puede reescribir con las instrucciones sintÈticas MOV para OR y CMP  para SUBcc.
+-Se puede reescribir con las instrucciones sint√©ticas MOV para OR y CMP  para SUBcc.
 
 6. Implemente en lenguaje de bajo nivel y lenguaje de maquina el siguiente programa.
 7. a.               LENGUAJE DE BAJO NIVEL
@@ -42,7 +44,7 @@ int b = -16800;     SETHI -17,%L1
                     OR %L1,608,%L1
 if((a+b)<=b*32){    ADD %L0,%L1,%L3
                     SLL %L1,32,%L4
-                    CMP %L3,%L4,%L4
+                    CMP %L3,%L4
                     BG a SALTO1
 c=a+(b*2);          SLL %L1,2,%L6
                     ADD %L0,%L6,%L2
@@ -53,11 +55,7 @@ else {return b;     MOV %L1,%O0
 return a+c;         ADD %L0,%L2,%O1
 }
 
-
-
-
-
-LENGUAJE DE M¡QUINA
+LENGUAJE DE M√ÅQUINA
 
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0000	        10	10000	000010	00000	1  	  0000000001000	
@@ -68,14 +66,14 @@ OX0008	        10	10001	00010	10001	1	0001001100000
 OX000C	        10	10010	000100	10010	1	0000000100001	
 OX0010	        10	10011	000000	10000	0	00000000	10001
 OX0014	        10	10100	100101	10001	1	00000000	100000
-OX0018	        10	10101	010100	10011	0	00000000	10100
+OX0018	        10	10010	010100	00000	0	00000000	10100
 	        OP	a	cond	OP2	disp22		
 OX001C	        00	1	1010	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0020	        10	10110	100101	10001	1	00000000	00010
 	        OP	a	cond	OP2	disp22		
 OX0024	        00	1	1000	010	0000000000000000000010		
-	        OP	RD	OP3	RS1	i	Unusued/zero 	SHCNT ” RS2
+	        OP	RD	OP3	RS1	i	Unusued/zero 	SHCNT √ì RS2
 OX0028	        10	01000	100101	00000	0	00000000	10000
 OX002C	        10	01001	000000	10000	0	00000000	01001
 
@@ -87,7 +85,7 @@ int a = 8;              MOV 8,%L0
 int b = -10;            MOV -10,%L1
 int c = 3;              MOV 3,%L2
         
-if(a!=b){               CMP %L0,%L1,%L3
+if(a!=b){               CMP %L0,%L1
                         BE a SALTO1
 return c/8;             SRL %L2,8,%L2
                         MOV %L2,%O0
@@ -97,13 +95,13 @@ return b;               MOV %L1,%O1
 }                       EXIT
                         NOP
 }
-LENGUAJE DE M¡QUINA
+LENGUAJE DE M√ÅQUINA
 
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0000	        10	10000	000010	00000	1	0000000001000	
 OX0004	        10	10001	000010	10001	1	0000000010110	
 OX0008	        10	10010	000100	00000	1	0000000000011	
-OX000C	        10	10011	100101	10000	0	00000000	10001
+OX000C	        10	10000	100101	00000	0	00000000	10001
 	        OP	a	cond	OP2	disp22		
 OX0010	        00	1	0001	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2/SHCNT
@@ -126,7 +124,7 @@ int a = -21180;        SETHI -21,%L0
 return a;              MOV %L0,%O0
 }
 
-LENGUAJE DE M¡QUINA
+LENGUAJE DE M√ÅQUINA
 
 DIRECCIONES	OP	RD	OP2	Imm22			
 OX0000	        00	10000	100	11111111111111111101011			
@@ -141,39 +139,39 @@ int a = 6;                 MOV 6,%L0
 int b=4;                   MOV 4,%L1
                            MOV 0,%L4
 for(int i=0; i<=3; i++)    FOR
-                           CMP  %L4,3,%L5 
+                           CMP  %L4,3
 {                          BG a SALTO1
 c=(a+b)/8;                 ADD %L0,%L1,%L0
                            SRL %L0,8,%L2
-	}                  BA a FOR
+	}                  BA    FOR
 	                   ADD %L4,1,%L4
 	                   SALTO1
 return c;                  MOV  %l2,%O0   
 }                        
                           
 
-LENGUAJE DE M¡QUINA
+LENGUAJE DE M√ÅQUINA
 
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0000	        10	10000	0000100	00000	1	0000000000110	
 OX0004	        10	10001	0000100	00000	1	0000000000100	
 OX0008	        10	10010	0000100	00000	1	0000000000000	
-OX000C	        10	10101	100101	10100	1	0000000000011	
+OX000C	        10	10100	100101	00000	1	0000000000011	
 	        OP	a	cond	OP2	disp22		
-OX0010	        00	1	1010	010	0000000000000000000100		
+OX0010	        00	1	1010	010	0000000000000000000101		
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2/SHCNT
 OX0014	        10	10000	000000	10000	0	00000000	10001
 OX0018	        10	10010	100100	10000	1	00000000	01000
          	OP	a	cond	OP2	disp22		
-OX001C	        00	1	1000	010	0000000000000000000010	
+OX001C	        00	0	1000	010	1111111111111111111011	
                 OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0020          10      10100   000000  10100   1        0000000000001
 	        OP	RD	OP3	RS1	i	Unusued/zero 	RS2
 OX0024	        10	01000	000010	00000	0	00000000	10010
 		
 
-8. Convierta el siguiente cÛdigo a lenguaje de m·quina
-AsiganciÛn de registros
+8. Convierta el siguiente c√≥digo a lenguaje de m√°quina
+Asiganci√≥n de registros
    X=%i0
    y=%i1
    z=%i2 
@@ -217,8 +215,8 @@ OX0024        	10	10000	000010	00000	1	0000000000000
 OX0028          10	11001	000000	10000	1	0000000101101
 
 
-9.Implemente una funciÛn mul en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de m·quina SPARCV8 que realice la multiplicaciÛn de dos enteros sin signo usando solo sumas.
-AsiganciÛn de registros
+9.Implemente una funci√≥n mul en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de m√°quina SPARCV8 que realice la multiplicaci√≥n de dos enteros sin signo usando solo sumas.
+Asiganci√≥n de registros
    a=%i0
    b=%i1 
    resultado=%L0  
@@ -228,10 +226,10 @@ AsiganciÛn de registros
 int mul (int a,int b)                          MOV 0,%L1                      
 {                                              MOV 0,%L2
                                                FOR   
-int c = 0;                                     CMP %L2,%I1,%L3
+int c = 0;                                     CMP %L2,%i1
                                                BG a SALTO
-for  (int  i = 0;  i < b;  i++)                ADD %L1,%i1.%L1
-{                                              BA a FOR 
+for  (int  i = 0;  i < b;  i++)                ADD %L1,%i1,%L1
+{                                              BA     FOR 
 c=c+a;                                         ADD %L2,1%l2
 }                                              SALTO
 return c;                                      JMPL %O7,8,%g0
@@ -247,19 +245,19 @@ int num=2, num2=5, resultado=0;                MOV 0,%L0
 return resultado;
 }
 
-LENGUAJE M¡QUINA
+LENGUAJE M√ÅQUINA
 
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0000	        10	10001	000010	00000	1	0000000000000	
 OX0004	        10	10010	000010	00000	1	0000000000000	
-OX0008	        10	10011	010100	10010	1	00000000	11001
+OX0008	        10	10010	010100	00000	1	00000000	11001
 OX000C	        10	00000	111000	01111	1	0000000001000	
 	        OP	a	cond	OP2	disp22		
-OX0010	        00	1	1010	010	0000000000000000000011		
+OX0010	        00	1	1010	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0014	        10	100101	000000	10001	0	00000000	11001
 	        OP	a	cond	OP2	disp22		
-OX0018	        00	1	1000	010	1	0000000000010	
+OX0018	        00	0	1000	010	111111111111111111111100	
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX001C	        10	10010	000000	10010	1	0000000000001	
 OX0020	        10	00000	111000	01111	1	0000000001000	
@@ -273,9 +271,9 @@ OX0034	        10	10000	000010	00000	1	0000000000000
 OX0038	        10	01001	000010	00000	1	00000000	10000
 
 
-10.Implemente la funciÛn pot en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de m·quina SPARCV8 que realice la potencia de dos n˙meros enteros sin signo realizando llamados a la funciÛn desarrollada en el punto 9.
+10.Implemente la funci√≥n pot en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de m√°quina SPARCV8 que realice la potencia de dos n√∫meros enteros sin signo realizando llamados a la funci√≥n desarrollada en el punto 9.
 
-AsiganciÛn de registros
+Asiganci√≥n de registros
    a=%i0
    b=%i1 
    resultado=%L0  
@@ -286,11 +284,11 @@ AsiganciÛn de registros
 int mul (int a,int b)                          MOV 0,%L3                      
 {                                              MOV 0,%L2
                                                FOR   
-int c = 0;                                     CMP %L2,%I1,%L5
+int c = 0;                                     CMP %L2,%i1
                                                BG a SALTO
 for  (int  i = 0;  i < b;  i++)                ADD %L3,%i1.%L3
 {                                              BA a FOR 
-c=c+a;                                         ADD %L2,1%l2
+c=c+a;                                         ADD %L2,1,%l2
 }                                              SALTO
 return c;                                      JMPL %O7,8,%g0
 }                                              MOV %L3,%O0  
@@ -302,28 +300,30 @@ int main ()                                    MOV 2,%i0
 int num=2;				       MOV %L0,%L1
 int num2=5;				       MOV 2,%L2
 int resultado=0;			       FOR
-int r=num;				       CMP %L2,%I0,%L4
+int r=num;				       CMP %L2,%io
 					       BG a SALTO1
 for  (int  i = 2;  i <= b;  i++)  	       CALL MUL
+                                               BA    FOR 
 {                                              ADD %L2,1,%L2
+                                               SALTO1                                      
 r=(mul (r,num));                               MOV %L1,%O1
 }
 return r;
 }
 }
 
-LENGUAJE M¡QUINA
+LENGUAJE M√ÅQUINA
 
 DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0000	        10	10011	000010	00000	1	0000000000000	
 OX0004	        10	10010	000010	00000	1	0000000000000	
-OX0008	        10	10101	010100	10010	1	00000000	11001
+OX0008	        10	10010	010100	00000	1	00000000	11001
 	        OP	a	cond	OP2	disp22		
-OX000C	        00	1	1010	010	0000000000000000000011		
+OX000C	        00	1	1010	010	0000000000000000000100		
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0010	        10	10011	000000	10011	0	00000000	11000
 	        OP	a	cond	OP2	disp22		
-OX0014	        00	1	1000	010	1	0000000000010	
+OX0014	        00	0	1000	010      1111111111111111111100	
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
 OX0018	        10	10010	000000	10010	1	0000000000001	
 OX001C	        10	00000	111000	01111	1	0000000001000	
@@ -333,11 +333,62 @@ OX0028	        10	11001	000010	00000	1	0000000000101
 OX002C	        10	10000	000010	00000	1	00000000000000	
 OX0030	        10	10001	000010	00000	0	00000000	10000
 OX0034	        10	10010	000010	00000	1	0000000000010	
-OX0038	        10	10100	010100	10010	0	00000000	11000
-	        OP	disp30					
-OX003C	        01	111111111111111111111111110001					
+OX0038	        10	10100	010100	OOOOOO	0	00000000	11000
+                OP	a	cond	OP2	 disp22		
+OX003C	        00	1	1010	010      0000000000000000000100	        
+	
+	
+                OP	a	cond	OP2	disp22		
+OX00034	        00	O	1000	010	111111111111111111111OO	
 	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
-OX0030	        10	10010	000010	10010	1	0000000000001	
-OX0034	        10	01001	000010	00000	0	00000000	10001
+OX0038	        10	10010	000010	10010	1	0000000000001	
+OX004C	        10	01001	000010	00000	0	00000000	10001
 
+11.Implemente una funci√≥n pol en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de m√°quina SPARCV8 que calcule un polinomio de grado n, en donde los coeficientes del polinomio se encuentran almacenados en un vector k de n+1 posiciones, de la siguientes forma:
+		pol(x,k,n)=i=0nkixi
 
+En donde el ki se encuentra en la posici√≥n k[i] del vector k.
+
+12.Implemente una funci√≥n fact en lenguaje de alto nivel, lenguaje de bajo nivel SPARCV8 y lenguaje de m√°quina SPARCV8 que calcule el factorial de un n√∫mero entero sin signo
+
+Asiganci√≥n de registros
+   a=%L0
+   b=%i0 
+   i=%L1
+                                               Lenguaje Ensamblador
+                                               FACT
+int fact (int b  )                             MOV 1,%L0                      
+{                                              MOV 0,%i0
+                                               MOV 1,%L1
+					       ADD %i0,1,%i0
+                                               WHILE   
+int a = 1;  int i = 1;                         CMP %L1,%i0
+                                               BGE a SALTO
+					       CALL MUL
+                                               NOP                       
+{                                              ADD %L1,1,%L1
+a=mul(a,i);                                    BA WHILE                                  
+i++;                                           SALTO                                            
+}                                              
+return a;                                      
+}                                                     
+                                               
+LENGUAJE M√ÅQUINA
+
+DIRECCIONES	OP	RD	OP3	RS1	i	Unusued/zero	RS2
+OX0000	        10	1000O	000010	00000	1	0000000000001	
+OX0004	        10	11000	000010	00000	1	0000000000000	
+OX0008	        10	10001	000010	00000	1	0000000000001
+OX000C	        10	11000	000000	11000	1	000000000O001	
+OX0010          10	11000	010100	00000	0	00000000	10001
+	        OP	a	cond	OP2	disp22		
+OX0018	        00	1	1O11	010	0000000000000000000011
+	        OP	disp30					
+OX001C	        01	1111111111111111111111111101101
+OX0020          OP	RD	OP2	Imm22			
+                00	00000	100	0000000000000000000000			
+	        OP	RD	OP3	RS1	i	Unusued/zero	RS2
+OX0024	        10	10001	000000	10001	1	0000000000001	
+	        OP	a	cond	OP2	disp22		
+OX0028	        00	0	1000	010	11111111111111111111O11			
+          
